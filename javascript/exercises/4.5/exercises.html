@@ -85,7 +85,15 @@
       img.src = "https://picsum.photos/200";
       img.className = "small-image";
       div3.appendChild(img);
-
+      // ex8
+      let list = document.createElement("ul")
+      let contents = ["um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"]
+      for (let i in contents) {
+        let item = document.createElement("li");
+        item.innerHTML = contents[i];
+        list.appendChild(item);
+      }
+      div4.appendChild(list);
     </script>
   </body>
 </html>
