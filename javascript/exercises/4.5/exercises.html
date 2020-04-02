@@ -96,12 +96,15 @@
       div4.appendChild(list);
       // ex9
       for (i = 1; i <= 3; i+=1) {
-        let h3 = document.createElement("h3");
-        h3.innerHTML = "algum texto";
-        div1.appendChild(h3)
+        let text = document.createElement("h3");
+        text.innerHTML = "algum texto";
+        div1.appendChild(text)
+      // ex2.2
+        text.className = "description";
       }
       // ex2.1
       title.className = "title";
+
     </script>
   </body>
 </html>
