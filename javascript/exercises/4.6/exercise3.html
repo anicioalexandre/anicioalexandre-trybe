@@ -54,10 +54,31 @@
         button.onclick = function() {
           alert("You clicked the button.")
         }
-      
+      let gamePrice = 39.99;
+      let discount = 0.2;
+        let button2 = document.createElement("button");
+        button2.innerHTML = "Button 2";
+        document.querySelector(".exampleblock").appendChild(button2);
+        button2.onclick = function() {
+          alert(`$${(gamePrice*discount).toFixed(0)} off!`)
+        }
+        let imgLive = document.createElement("img");
+        let img1Src = "https://i1.wp.com/gungaporanga.sfo2.cdn.digitaloceanspaces.com/2019/10/como-aproveitar-o-feriado-prolongado-660x387.jpg";
+        let img2Src = "https://www.canalm8.com.br/wp-content/uploads/2017/04/bomba-660x387@2x.jpg";
+
+        imgLive.src = img1Src;
+
+        document.querySelector(".exampleblock").appendChild(imgLive);
+        imgLive.onmouseover = function() {
+          imgLive.src = img2Src;
+        }
+        imgLive.onmouseout = function() {
+          imgLive.src = img1Src;
+        }
+
       }
       </script>
-
+    
       <p>You may want to consider using JavaScript's built in <a href="http://www.w3schools.com/js/js_obj_math.asp"
           target="_blank">Maths object</a> to round the number you get in your result to a more reasonable one.</p>
 
