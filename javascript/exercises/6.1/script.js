@@ -48,7 +48,7 @@ function formDiv() {
 const buttonClear = document.getElementById('clear');
 function clearForm() {
   for ( let i = 0; i < allInputs.length; i +=1 ) {
-    allInputs[i].value = '';
+    allInputs[i].value = 'git';
   }
   for ( let k = 0; k < allTextArea.length; k +=1 ) {
     allTextArea[k].value = '';
