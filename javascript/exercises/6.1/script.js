@@ -53,7 +53,9 @@ function clearForm() {
   for ( let k = 0; k < allTextArea.length; k +=1 ) {
     allTextArea[k].value = '';
   }
-  document.querySelector('div').innerHTML = '';
+  while (document.querySelector('div')) {
+    document.querySelector('div').remove();
+  }
 }
 
 window.onload = function () {
