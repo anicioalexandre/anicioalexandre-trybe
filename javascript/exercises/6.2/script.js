@@ -7,7 +7,32 @@ function addOption() {
     select.appendChild(opt);
   }
 }
+new JustValidate('.js-form', {
+  rules: {
+    checkbox: {
+      required: true
+    },
+    myField: {
+      required: true
+    },
+    email: {
+      required: true,
+      email: true
+    },
+    password: {
+      strength: {
+        default: true,
+      }
+  },
+  messages: {
+    name: {
+      minLength: 'My custom message about only minLength rule'
+    },
+    email: 'My custom message about error (one error message for all rules)'
+  },
+
 const date = document.getElementById('data');
+document.getElementById('data').DatePickerX.init();
 
 function addSlash() {
   date.value = date.value.replace(/^(\d\d)(\d)$/g, '$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g, '$1/$2').replace(/[^\d\/]/g, '')
@@ -48,7 +73,7 @@ function formDiv() {
 const buttonClear = document.getElementById('clear');
 function clearForm() {
   for ( let i = 0; i < allInputs.length; i +=1 ) {
-    allInputs[i].value = 'git';
+    allInputs[i].value = '';
   }
   for ( let k = 0; k < allTextArea.length; k +=1 ) {
     allTextArea[k].value = '';
@@ -60,10 +85,10 @@ function clearForm() {
 
 window.onload = function () {
   this.addOption();
-  date.addEventListener('keyup', function () {
-    addSlash();
-    dateLimits();
-  });
+  // date.addEventListener('keyup', function () {
+  //   addSlash();
+  //   dateLimits();
+  // });
   buttonSubmit.addEventListener('click', function(e) {
     e.preventDefault();
     formDiv();
