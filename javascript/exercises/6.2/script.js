@@ -7,29 +7,6 @@ function addOption() {
     select.appendChild(opt);
   }
 }
-new JustValidate('.js-form', {
-  rules: {
-    checkbox: {
-      required: true
-    },
-    myField: {
-      required: true
-    },
-    email: {
-      required: true,
-      email: true
-    },
-    password: {
-      strength: {
-        default: true,
-      }
-  },
-  messages: {
-    name: {
-      minLength: 'My custom message about only minLength rule'
-    },
-    email: 'My custom message about error (one error message for all rules)'
-  },
 
 const date = document.getElementById('data');
 document.getElementById('data').DatePickerX.init();
