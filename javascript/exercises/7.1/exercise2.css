@@ -75,13 +75,14 @@ aside>h2 {
   border-radius: 25px;
 }
 
-h1, h2, h3, li {
+h1, h2, li {
   font-size: 1.2em;
   text-align: center;
   margin-bottom: 0;
 }
 
 h3 {
+  font-size: 1.2em;
   margin-bottom: 0;
   border-top: 1px solid black;
 }
@@ -127,5 +128,30 @@ article, footer {
     justify-content: space-evenly;
     align-items: center;
     
+  }
+  .aside-article {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .asides {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
+  }
+  .aside-one, .aside-two {
+    width: 100%;
+  }
+  .aside-two {
+    order: -1;
+  }
+  article {
+    width: 70%;
+  }
+  aside>h2 {
+    border: none;
+    border-radius: 0;
+  }
+  .chapters, .info {
+    display: flex;
   }
 }
