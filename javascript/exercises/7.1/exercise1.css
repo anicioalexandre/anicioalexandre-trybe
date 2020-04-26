@@ -34,7 +34,7 @@ figure {
 
 @media screen and (min-width: 600px) {
   body {
-    font-size: 26px;
+    font-size: 20px;
   }
   .text {
     width: fit-content;
