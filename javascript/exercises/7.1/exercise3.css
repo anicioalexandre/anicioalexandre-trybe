@@ -1,0 +1,161 @@
+#container {
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+}
+
+#header {
+  background: #ccc;
+  padding: 20px;
+}
+
+#header h1 {
+  margin: 0;
+}
+
+#navigation {
+  float: left;
+  width: 100%;
+  background: #333;
+}
+
+#navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul li {
+  list-style-type: none;
+  display: inline;
+}
+
+#navigation li a {
+  display: block;
+  float: left;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  border-right: 1px solid #fff;
+}
+
+#navigation li a:hover {
+  background: #383;
+}
+
+#content-container {
+  float: left;
+  background: #FFF;
+}
+
+#content {
+  clear: left;
+  float: left;
+  width: 60%;
+  padding: 20px 0;
+  margin: 0 0 0 4%;
+  display: inline;
+}
+
+#content h2 {
+  margin: 0;
+}
+
+#aside {
+  float: right;
+  width: 33%;
+  padding: 20px 0;
+  margin: 0 3% 0 0;
+  display: inline;
+}
+
+#aside h3 {
+  margin: 0;
+}
+
+#footer {
+  clear: left;
+  background: #ccc;
+  text-align: right;
+  padding: 20px;
+  height: 1%;
+}
+
+@media print {
+  #footer {
+    display: none;
+  }
+  #header {
+    display: none;
+  }
+  #navigation {
+    display: none;
+  }
+  #content-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #aside {
+    padding: 0;
+    margin: 0;
+  }
+  #content {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  #container {
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+  }
+  #header {
+    display: flex;
+    height: 50px;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  #navigation {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  #content-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 110px;
+    padding: 1vw 5vw;
+  }
+  #content {
+    width: 100%;
+  }
+  #aside {
+    display: none;
+  }
+  img {
+    width: 80%;
+    max-width: 400px;
+  }
+  .image {
+    display: flex;
+    justify-content: center;
+  }
+  #footer {
+    display: flex;
+    justify-content: center;
+  }
+}
