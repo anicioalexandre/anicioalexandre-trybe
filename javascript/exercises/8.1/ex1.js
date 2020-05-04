@@ -7,6 +7,7 @@ const fatorialFunction = (num) => {
 //fatorialFunction(4);
 //24
 
-//BONNUS: all in one line
+//BONNUS: all in one line:
 const fatorialBonus = num => (num <= 1) ? 1 : num * fatorialBonus(num - 1);
-console.log(fatorialBonus(4));
+//fatorialFunction(5);
+//120
