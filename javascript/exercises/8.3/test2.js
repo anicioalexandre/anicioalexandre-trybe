@@ -12,5 +12,6 @@ function myIndexOf(arr, item) {
 }
 
 // tests:
-assert.equal(myIndexOf([1, 2, 3, 4], 3), 2)
-assert.equal(myIndexOf([1, 2, 3, 4], 5), -1)
+const array = [1, 2, 3, 4];
+assert.strictEqual(myIndexOf(array, 3), 2)
+assert.strictEqual(myIndexOf(array, 5), -1)

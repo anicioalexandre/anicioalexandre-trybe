@@ -9,6 +9,6 @@ function sum(a, b) {
 }
 
 // testes:
-assert.equal(sum(4, 5), 9, 'Error');
-assert.equal(sum(0, 0), 0, 'Error');
+assert.strictEqual(sum(4, 5), 9, 'Error');
+assert.strictEqual(sum(0, 0), 0, 'Error');
 assert.throws(() => {sum(4, '5')}, /^Error: parameters must be numbers/)
