@@ -68,4 +68,10 @@ const smallerName = () => {
   return nameBook[0].name;
 };
 
+// using reduce:
+const reduceMethod = () => {
+  return books.reduce((a, b) => (a.name.length < b.name.length ? a : b)).name;
+};
+
 assert.equal(smallerName(), 'Duna');
+assert.equal(reduceMethod(), 'Duna');
