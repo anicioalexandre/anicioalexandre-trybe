@@ -1,15 +1,11 @@
-const newPromise = () => {
+const sumRandomArr = () => {
   const arr = Array.from({ length: 10 }, () => Math.floor(Math.random() * 50));
   const sum = arr
     .map((num) => num * num)
     .reduce((total, num) => total + num, 0);
-  return new Promise((resolve, reject) => {
-    if (sum < 8000) {
-      resolve(sum);
-    } else {
-      reject(`Error, we have got more than 8000 at the beginning! :(`);
-    }
-  });
+
+  if (sum < 8000) throw new Error();
+  return sum;
 };
 
 const arrDivided = (sum) =>
@@ -18,12 +14,12 @@ const arrSum = (arr) => arr.reduce((total, num) => total + num, 0);
 
 const transformingToAsync = async () => {
   try {
-    const initialSum = await newPromise();
+    const initialSum = await sumRandomArr();
     const array = await arrDivided(initialSum);
     const finalSum = await arrSum(array);
     console.log(finalSum);
-  } catch (response) {
-    console.log(response);
+  } catch (e) {
+    console.log('Error, we have got more than 8000 at the beginning! :(');
   }
 };
 
