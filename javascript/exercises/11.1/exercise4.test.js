@@ -5,7 +5,7 @@ const getRepos = (url) => {
     .then((response) => response.json())
     .then((data) => {
       return data.map((repo) => repo.name);
-    })
+    });
 };
 
 describe('checking items in github repo list', () => {
