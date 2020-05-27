@@ -32,7 +32,6 @@ describe('testName', () => {
     expect(mockSub(200, 5)).toBe(15);
     math.subtrair.mockRestore();
     expect(math.subtrair(20, 5)).toBe(15);
-
   });
   it('multiplicar', () => {
     expect.assertions(2);
