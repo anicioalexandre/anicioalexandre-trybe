@@ -6,25 +6,36 @@ const task = (value) => {
   return <li>{value}</li>;
 };
 const compromissos = [
-  'lavar louça',
-  'fazer compras',
-  'estudar',
-  'arrumar a cama',
-  'pagar contas',
+  'Estudar React',
+  'Fazer compras',
+  'Estudar',
+  'Arrumar a cama',
+  'Pagar contas',
 ];
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ul>
-          Minha primeira lista no React xD
-        {compromissos.map((tarefa) => task(tarefa))}
-        </ul>
+        <Nome name="Alexandre" />
+        <Imagem className = "App-logo" alt="logo" />
+        <Lista />
       </header>
     </div>
   );
 }
-
+function Nome(props) {
+  return <h1>Hello, {props.name}.</h1>
+}
+function Imagem(props) {
+  return <img src={logo} className={props.className} alt={props.logoName} />
+}
+function Lista() {
+  return (
+    <ul>
+    Meus primeiros componentes no React :D
+  {compromissos.map((tarefa) => task(tarefa))}
+  </ul>
+  )
+}
 export default App;
