@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="forms" action="" method="GET">
+
+    <fieldset id="form1">
+      <legend>Dados</legend>
+      <label>Nome<br>
+        <input type="text" id="nome" maxlength="40" required>
+      </label><br>
+
+      <label>Email<br>
+        <input type="text" id="email" maxlength="50" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2-4}$" required>
+      </label><br>
+
+      <label>CPF<br>
+        <input type="text" id="cpf" maxlength="11" required>
+      </label><br>
+
+      <label>Endereço<br>
+        <input type="text" id="end" maxlength="200" required>
+      </label><br>
+
+      <label>Cidade<br>
+        <input type="text" id="cid" maxlength="28" required>
+      </label><br>
+
+      <label>Estado<br>
+        <select id="est" required>
+          <option>Selecionar Estado</option>
+        </select>
+      </label><br>
+
+      <p>Residência</p>
+      <label for="res1"><input name="res" type="radio" id="res1">Casa</label>
+      <label for="res2"><input name="res" type="radio" id="res2">Apartamento</label>
+
+    </fieldset>
+
+    <fieldset id="form2">
+      <legend>Trabalho</legend>
+      <label>Resumo do Currículo <br><textarea name="resumo" id="resumo" cols="30" rows="10" maxlength="1000" required></textarea></label><br>
+    
+      <label>Cargo<br>
+        <input type="text" id="cargo" maxlength="40" required>
+      </label><br>
+    
+      <label>Descrição do Cargo <br><textarea name="descricao" id="escricao" cols="30" rows="10" maxlength="500" required></textarea></label><br>
+
+      <label>Data de Início<br>
+        <input type="text" id="data" maxlength="10" required>
+      </label><br>
+
+    </fieldset>
+    <button id="button" type="submit">Send Request</button>
+    <button id="clear">Clear Request</button>
+
+  </form>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
