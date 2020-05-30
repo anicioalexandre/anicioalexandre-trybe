@@ -20,7 +20,7 @@ The program has more than **1,500 hours** of classroom and online classes and co
 - [x] 3-2: *HTML & CSS - Getting Started with CSS*
 - [x] 3-3: *HTML & CSS - Selectors and positioning*
 - [x] 3-4: *Semantic HTML*
-- [x] 3-5: *[Project - HTML & CSS](https://deboracosilveira.github.io/dog-page/)*
+- [x] 3-5: Project - HTML & CSS
 ##### Block 4: Introduction - JavaScript
 - [x] 4-1: *JavaScript - Getting Started*
 - [x] 4-2: *JavaScript - For Array and Loop*
@@ -31,11 +31,11 @@ The program has more than **1,500 hours** of classroom and online classes and co
 - [x] 4-7: *JavaScript - Events*
 - [x] 4-8: *JavaScript - Web Storage*
 ##### Block 5: Introduction - JavaScript - Projects
-- [x] 5-1: Project - Meme Generator (https://deboracosilveira.github.io/meme-generator/)
-- [x] 5-2: Project - Art with Pixels (https://deboracosilveira.github.io/pixels-art/)
-- [x] 5-3: Project - Task List ()
-- [x] 5-4: Project - Guess the Color (https://deboracosilveira.github.io/color-guess/)
-- [x] 5-5: Project - Mysterious Card (https://deboracosilveira.github.io/mistery-letter/)
+- [x] 5-1: Project - Meme Generator (I'm going to host that project soon!)
+- [x] 5-2: Project - Art with Pixels (I'm going to host that project soon!)
+- [x] 5-3: Project - Task List (I'm going to host that project soon!)
+- [x] 5-4: Project - Guess the Color (I'm going to host that project soon!)
+- [x] 5-5: Project - Mysterious Card (I'm going to host that project soon!)
 
 ## Front-end development :hourglass_flowing_sand:
 ##### Block 6: Introduction - Front-end
@@ -54,17 +54,17 @@ The program has more than **1,500 hours** of classroom and online classes and co
 - [x] 8-2: *JavaScript ES6 - Objects*
 - [x] 8-3: *JavaScript unit tests*
 - [x] 8-4: *Testing in small steps*
-- [x] 8-5: *[Project - JavaScript Unit Tests]()*
+- [x] 8-5: Project - JavaScript Unit Tests
 ##### Block 9: JavaScript ES6
 - [x] 9-1: *JavaScript ES6 - Higher Order Functions - forEach, find, filter, some, every, sort*
 - [x] 9-2: *JavaScript ES6 - Higher Order Functions - map and reduce*
 - [x] 9-3: *JavaScript ES6 - spread operator, rest parameter, destructuring and more*
-- [x] 9-4: *[Project - Zoo functions]()*
+- [x] 9-4: *Project - Zoo functions*
 ##### Block 10: Asynchronicity & Callbacks
 - [x] 10-1: *First steps at Jest*
 - [x] 10-2: *Asynchronous JavaScript and Callbacks*
 - [x] 10-3: *JavaScript Promises*
-- [x] 10-4: *[Project - Shopping Cart]()*
+- [x] 10-4: *Project - Shopping Cart(I'm going to host that project soon!)*
 ##### Block 11: Jest
 - [x] 11-1: *Jest - Asynchronous Tests*
 - [x] 11-2: *Jest - Simulating behaviors*
