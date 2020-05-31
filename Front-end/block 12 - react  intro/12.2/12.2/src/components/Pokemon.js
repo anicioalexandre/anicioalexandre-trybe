@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from './Image';
+import {PokemonDiv} from "../styles/styles";
 
 class Pokemon extends React.Component {
   render() {
@@ -11,13 +12,15 @@ class Pokemon extends React.Component {
       moreInfo,
     } = this.props.pokemonInfo;
     return (
-      <div>
+      <PokemonDiv>
+        <section>
         <Image src={image} alt={name} />
+        </section>
         <h1>{name}</h1>
         <p> {type} </p>
         <p>{value + measurementUnit}</p>
         <a href={moreInfo} target="_blanck">More info</a>
-      </div>
+      </PokemonDiv>
     );
   }
 }

@@ -1,15 +1,16 @@
 import React from 'react';
-import Pokemon from './Pokemon';
+import Pokemon from '../components/Pokemon';
+import {PokedexDiv} from "../styles/styles";
 
 class Pokedex extends React.Component {
   render() {
     const { pokedexData } = this.props;
     return (
-      <div className="pokemonDiv">
+      <PokedexDiv>
         {pokedexData.map((pokemon) => (
           <Pokemon key={pokemon.id} pokemonInfo={pokemon} />
         ))}
-      </div>
+      </PokedexDiv>
     );
   }
 }
