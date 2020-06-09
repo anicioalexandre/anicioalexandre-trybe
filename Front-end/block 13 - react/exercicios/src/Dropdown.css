@@ -1,0 +1,29 @@
+.Dropdown{
+  display: flex;
+  flex-direction: column;
+  background: gray;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 10px;
+  width: fit-content;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.actual {
+  border: 1px black solid;
+  border-radius: 10px;
+  height: 150%;
+  width: fit-content;
+  padding: 10px 100px;
+  margin: 5px;
+}
+
+p {
+  padding: 10px 50px;
+  border: 1px black solid;
+  border-radius: 10px;
+  text-align: center;
+  margin: 1px;
+}
+
