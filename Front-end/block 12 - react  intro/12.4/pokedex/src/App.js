@@ -8,7 +8,7 @@ import About from './components/About';
 import React from 'react';
 import data from './data';
 import { PokedexDiv, ButtonStyle } from './styles/styles';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { light } from './styles/theme';
 import NotFound from './components/Notfound';
@@ -21,9 +21,7 @@ class App extends React.Component {
     this.state = {
       element: 0,
       data: data,
-      disable: false,
       checkbox: false,
-      disableCheck: false,
       favState: setFavoritos,
     };
     this.favAdd = this.favAdd.bind(this);
@@ -39,27 +37,15 @@ class App extends React.Component {
     if (type) {
       const newData = data.filter((a) => a.type === type);
       localStorage.setItem('type', type);
-      if (newData.length === 1)
-        this.setState({
-          disable: true,
-          data: newData,
-          checkbox: false,
-          disableCheck: true,
-        });
-      else
-        this.setState({
-          disable: false,
-          data: newData,
-          checkbox: false,
-          disableCheck: true,
-        });
+      this.setState({
+        data: newData,
+        checkbox: false,
+      });
     } else {
       localStorage.removeItem('type');
       return this.setState({
-        disable: false,
         data: data,
         checkbox: false,
-        disableCheck: false,
       });
     }
   }
@@ -70,7 +56,7 @@ class App extends React.Component {
   }
 
   favAdd({ id }) {
-    const {favState} = this.state;
+    const { favState } = this.state;
     if (setFavoritos.has(id)) setFavoritos.delete(id);
     else setFavoritos.add(id);
     localStorage.setItem('ids', JSON.stringify([...favState]));
@@ -80,10 +66,8 @@ class App extends React.Component {
   favShow() {
     const { checkbox, data, favState } = this.state;
     if (!checkbox && favState.size > 0) {
-      const favArr = data.filter((elem) =>
-        [...favState].includes(elem.id)
-      );
-      this.setState({ data: favArr, disableCheck: false });
+      const favArr = data.filter((elem) => [...favState].includes(elem.id));
+      this.setState({ data: favArr });
     } else {
       this.changeData();
     }
@@ -94,12 +78,12 @@ class App extends React.Component {
     const recapType = localStorage.getItem('type');
     const getIds = JSON.parse(localStorage.getItem('ids'));
     if (recapType || getIds) {
-      getIds.forEach(elem => setFavoritos.add(elem)) //re-adding all saved data into the set setFavoritos
-      this.setState({favState: setFavoritos}) // reloading all
+      getIds.forEach((elem) => setFavoritos.add(elem)); //re-adding all saved data into the set setFavoritos
+      this.setState({ favState: setFavoritos }); // reloading all
       this.changeData(recapType);
     } else this.changeData();
   }
-  
+
   render() {
     const arr = data.map((pokemon) => pokemon.type);
     const uniqueTypes = Array.from(new Set(arr));
@@ -129,10 +113,10 @@ class App extends React.Component {
                 <Button
                   onClick={() => this.changeDiv()}
                   desc="Change Pokemon"
-                  disable={this.state.disable}
+                  disable={this.state.data.length <= 1}
                 />
                 <Input
-                  isDisabled={this.state.disableCheck}
+                  isDisabled={this.state.favState.size < 1}
                   onChange={() => {
                     this.changeCheck();
                     this.favShow();
