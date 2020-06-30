@@ -6,7 +6,7 @@ import Pokedex from './components/Pokedex';
 import PokemonDetails from './components/PokemonDetails';
 import About from './components/About';
 import React from 'react';
-import data from './data';
+import pokemons from './data';
 import { PokedexDiv, ButtonStyle } from './styles/styles';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -14,15 +14,20 @@ import { light } from './styles/theme';
 import NotFound from './components/Notfound';
 import Input from './components/Input';
 
-const setFavoritos = new Set();
+// const setFavoritos = new Set();
 class App extends React.Component {
+  static recapFavorites() {
+    const getIds = JSON.parse(localStorage.getItem('ids'));
+    const setFavoritos = new Set(getIds); //re-adding all saved data into the set setFavoritos
+    return setFavoritos;
+  }
   constructor(props) {
     super(props);
     this.state = {
       element: 0,
-      data: data,
+      data: pokemons,
       checkbox: false,
-      favState: setFavoritos,
+      favState: App.recapFavorites(),
     };
     this.favAdd = this.favAdd.bind(this);
   }
@@ -35,18 +40,12 @@ class App extends React.Component {
   // mudando a data e salvando no localStorage de acorto com o tipo de pokemon
   changeData(type) {
     if (type) {
-      const newData = data.filter((a) => a.type === type);
+      const newData = pokemons.filter((a) => a.type === type);
       localStorage.setItem('type', type);
-      this.setState({
-        data: newData,
-        checkbox: false,
-      });
+      this.setState({ data: newData });
     } else {
       localStorage.removeItem('type');
-      return this.setState({
-        data: data,
-        checkbox: false,
-      });
+      return this.setState({ data: pokemons });
     }
   }
 
@@ -57,10 +56,10 @@ class App extends React.Component {
 
   favAdd({ id }) {
     const { favState } = this.state;
-    if (setFavoritos.has(id)) setFavoritos.delete(id);
-    else setFavoritos.add(id);
+    if (favState.has(id)) favState.delete(id);
+    else favState.add(id);
     localStorage.setItem('ids', JSON.stringify([...favState]));
-    this.setState({ favState: setFavoritos });
+    this.setState({ favState: favState });
   }
 
   favShow() {
@@ -76,17 +75,14 @@ class App extends React.Component {
   // carregando o data atual de acordo com a ultima seleção salva no localStorage
   componentDidMount() {
     const recapType = localStorage.getItem('type');
-    const getIds = JSON.parse(localStorage.getItem('ids'));
-    if (recapType || getIds) {
-      getIds.forEach((elem) => setFavoritos.add(elem)); //re-adding all saved data into the set setFavoritos
-      this.setState({ favState: setFavoritos }); // reloading all
-      this.changeData(recapType);
-    } else this.changeData();
+    if (recapType) this.changeData(recapType);
+    else this.changeData();
   }
 
   render() {
-    const arr = data.map((pokemon) => pokemon.type);
+    const arr = pokemons.map((pokemon) => pokemon.type);
     const uniqueTypes = Array.from(new Set(arr));
+    const { element, data, favState, checkbox } = this.state;
     return (
       <ThemeProvider theme={light}>
         <GlobalStyle />
@@ -95,10 +91,8 @@ class App extends React.Component {
           <Route exact path="/">
             <PokedexDiv background="#e63946" margin="5vh auto 5vh auto">
               <Pokedex
-                favState={this.state.favState}
-                pokedexData={
-                  this.state.data[this.state.element % this.state.data.length]
-                }
+                favState={favState}
+                pokedexData={data[element % data.length]}
               />
               <ButtonStyle flex="column" justify="space-evenly">
                 {/* gerando os botões dinamicamente */}
@@ -113,15 +107,15 @@ class App extends React.Component {
                 <Button
                   onClick={() => this.changeDiv()}
                   desc="Change Pokemon"
-                  disable={this.state.data.length <= 1}
+                  disable={data.length <= 1}
                 />
                 <Input
-                  isDisabled={this.state.favState.size < 1}
+                  isDisabled={favState.size < 1}
                   onChange={() => {
                     this.changeCheck();
                     this.favShow();
                   }}
-                  isChecked={this.state.checkbox}
+                  isChecked={checkbox}
                   label="Show favorites"
                 />
               </ButtonStyle>
@@ -130,15 +124,9 @@ class App extends React.Component {
 
           <Route path="/details/pokemon/:id">
             <PokemonDetails
-              onClick={() =>
-                this.favAdd(
-                  this.state.data[this.state.element % this.state.data.length]
-                )
-              }
-              favState={this.state.favState}
-              pokedexData={
-                this.state.data[this.state.element % this.state.data.length]
-              }
+              onClick={() => this.favAdd(data[element % data.length])}
+              favState={favState}
+              pokedexData={data[element % data.length]}
             />
           </Route>
           <Route path="/about" component={About} />
