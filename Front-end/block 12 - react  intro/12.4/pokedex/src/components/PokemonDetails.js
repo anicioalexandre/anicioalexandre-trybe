@@ -9,8 +9,11 @@ import {
 } from '../styles/styles';
 import { Link } from 'react-router-dom';
 import Button from './Button';
+import { addFavorite } from '../actions';
+import { connect } from 'react-redux';
 
 class PokemonDetails extends React.Component {
+  
   render() {
     const {
       name,
@@ -22,6 +25,7 @@ class PokemonDetails extends React.Component {
       foundAt,
       summary,
     } = this.props.pokedexData;
+    const { addFavorite, favorites } = this.props;
     return (
       <FlexRow>
         <PokemonDiv>
@@ -29,7 +33,7 @@ class PokemonDetails extends React.Component {
             <Image src={image} alt={name} />
           </section>
           <StarDiv>
-            {this.props.favState.has(id) && (
+            {favorites.includes(id) && (
               <Image
                 height={`${30}px`}
                 width={`${5}px`}
@@ -42,7 +46,10 @@ class PokemonDetails extends React.Component {
           <p> {type} </p>
           <p>{value + measurementUnit}</p>
           <ButtonStyle flex="column" justify="center">
-            <Button onClick={this.props.onClick} desc="Add to favorites" />
+            <Button
+              onClick={() => addFavorite(id)}
+              desc={favorites.includes(id) ? 'Remove favorite' : 'Add favorite'}
+            />
             <Link to={`/`}>
               <Button desc="Home" />
             </Link>
@@ -71,4 +78,12 @@ class PokemonDetails extends React.Component {
   }
 }
 
-export default PokemonDetails;
+const mapStateToProps = (state) => ({
+  favorites: state.interactions.favorites,
+});
+
+const mapDispatchToProps = {
+  addFavorite,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetails);
