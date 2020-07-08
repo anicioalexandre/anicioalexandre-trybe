@@ -18,7 +18,6 @@ import { connect } from 'react-redux';
 import { getLocal } from './service/localStorage';
 
 class App extends React.Component {
-
   // carregando o data atual de acordo com a ultima seleção salva no localStorage
   componentDidMount() {
     console.log('deu mount');
@@ -31,6 +30,7 @@ class App extends React.Component {
     const arr = pokemons.map((pokemon) => pokemon.type);
     const uniqueTypes = Array.from(new Set(arr));
     const {
+      actual,
       changePokemon,
       selected,
       filterData,
@@ -46,9 +46,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/">
             <PokedexDiv background="#e63946" margin="5vh auto 5vh auto">
-              <Pokedex
-                pokedexData={data[selected % data.length]}
-              />
+              <Pokedex pokedexData={data[selected % data.length]} />
               <ButtonStyle flex="column" justify="space-evenly">
                 {/* gerando os botões dinamicamente */}
                 {uniqueTypes.map((pokemonType) => (
@@ -74,11 +72,13 @@ class App extends React.Component {
             </PokedexDiv>
           </Route>
 
-          <Route path="/details/pokemon/:id">
-            <PokemonDetails
-              pokedexData={data[selected % data.length]}
-            />
-          </Route>
+          <Route
+            path="/details/pokemon/:id"
+            render={(props) => (
+              <PokemonDetails {...props} pokedexData={actual} />
+            )}
+          />
+
           <Route path="/about" component={About} />
           <Route component={NotFound} />
         </Switch>
@@ -92,6 +92,7 @@ const mapStateToProps = (state) => ({
   data: state.interactions.data,
   favorites: state.interactions.favorites,
   checkbox: state.interactions.checkbox,
+  actual: state.interactions.actual,
 });
 
 const mapDispatchToProps = {

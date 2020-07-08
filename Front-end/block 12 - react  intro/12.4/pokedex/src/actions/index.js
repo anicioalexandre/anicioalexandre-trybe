@@ -4,6 +4,9 @@ export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const VERIFY_FAVORITE = 'VERIFY_FAVORITE';
 export const FILTER_FAVORITE = 'FILTER_FAVORITE';
 export const DISABLE_FAVORITE = 'DISABLE_FAVORITE';
+export const ACTUAL_POKEMON = 'ACTUAL_POKEMON';
+export const REQUEST_API = 'REQUEST_API';
+export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
 
 // alterando a o pokemon exibido
 export const changePokemon = (actualId) => ({
@@ -34,3 +37,16 @@ export const filterFavorite = (favorites) => ({
 export const disableFavorite = () => ({
   type: DISABLE_FAVORITE,
 });
+
+export const actualPokemon = (id) => ({
+  type: ACTUAL_POKEMON,
+  id,
+});
+
+// export const request_API = () => ({
+//   type: REQUEST_API,
+// })
+
+// export const requestAPI_Success = () => ({
+//   type: REQUEST_API_SUCCESS,
+// })

@@ -4,11 +4,11 @@ import { PokemonDiv, ButtonStyle, StarDiv } from '../styles/styles';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import { connect } from 'react-redux';
-import { disableFavorite } from "../actions";
+import { actualPokemon } from '../actions';
 
 class Pokemon extends React.Component {
   render() {
-    const { favorites, disableFavorite, pokemonInfo } = this.props;
+    const { favorites, actualPokemon, pokemonInfo } = this.props;
     const {
       name,
       type,
@@ -37,7 +37,12 @@ class Pokemon extends React.Component {
         <p>{value + measurementUnit}</p>
         <ButtonStyle flex="column">
           <Link to={`/details/pokemon/${id}`}>
-            <Button onClick={disableFavorite} desc="Details" />
+            <Button
+              onClick={() => {
+                actualPokemon(id);
+              }}
+              desc="Details"
+            />
           </Link>
           <a href={moreInfo} target="_blanck" rel="noopener noreferrer">
             More info
@@ -53,7 +58,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  disableFavorite,
+  actualPokemon,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemon);
