@@ -7,14 +7,15 @@ import {
   FlexRow,
   StarDiv,
 } from '../styles/styles';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from './Button';
 import { addFavorite } from '../actions';
 import { connect } from 'react-redux';
 
 class PokemonDetails extends React.Component {
-  
   render() {
+    const { addFavorite, favorites, pokedexData } = this.props;
+    if (!pokedexData) return <Redirect to="/" />;
     const {
       name,
       type,
@@ -24,8 +25,7 @@ class PokemonDetails extends React.Component {
       moreInfo,
       foundAt,
       summary,
-    } = this.props.pokedexData;
-    const { addFavorite, favorites } = this.props;
+    } = pokedexData;
     return (
       <FlexRow>
         <PokemonDiv>

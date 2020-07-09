@@ -9,9 +9,8 @@ export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
 
 // alterando a o pokemon exibido
-export const changePokemon = (actualId) => ({
+export const changePokemon = () => ({
   type: CHANGE_POKEMON,
-  actualId,
 });
 
 export const filterData = (nature) => ({

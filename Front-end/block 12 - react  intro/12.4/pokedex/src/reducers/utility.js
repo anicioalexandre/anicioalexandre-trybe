@@ -10,7 +10,7 @@ export const filterItem = (state, action, nature) => {
   if (nature) {
     setLocal('nature', action.nature);
     const filteredData = pokemons.filter((p) => p.type === action.nature);
-    return updateObject(state, { data: filteredData });
+    return updateObject(state, { data: filteredData, checkbox: false });
   } else {
     removeLocal('nature');
     return updateObject(state, { data: pokemons });
