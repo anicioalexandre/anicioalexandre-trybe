@@ -8,7 +8,7 @@ class Display extends React.Component {
     const { loading, error, data } = this.context;
     if (loading) return <h2>Loading...</h2>;
     if (error) return <h2>{error}</h2>;
-    if (data) return data.map((child) => <Card data={child} />);
+    if (data) return data.map((child) => <Card key={child.title} data={child} />);
     return <h2>Digite sua pesquisa</h2>;
   }
 }
